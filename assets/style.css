@@ -673,3 +673,9 @@ a.contact-card:hover .card-arrow { color: var(--text); transform: translate(3px,
   .proj-stat b { font-size: 21px; overflow-wrap: anywhere; }
   .proj-hero .actions { width: 100%; }
 }
+
+/* главная карточка контактов (Telegram) */
+.contact-main { grid-column: 1 / -1; background: linear-gradient(135deg, var(--surface) 0%, var(--bg-2) 60%); border-color: var(--line-2); }
+.contact-main strong { font-family: var(--display); font-size: clamp(28px, 4.5vw, 44px); font-weight: 600; letter-spacing: -.03em; }
+.contact-main .card-icon { background: #fff; border-color: #fff; }
+.contact-main .card-icon svg { stroke: #000; }
