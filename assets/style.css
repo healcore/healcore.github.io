@@ -622,3 +622,54 @@ a.contact-card:hover .card-arrow { color: var(--text); transform: translate(3px,
 }
 
 [hidden] { display: none !important; }
+
+/* =========================================================
+   Адаптация страницы проекта под любой README
+   ========================================================= */
+.proj-layout { grid-template-columns: minmax(0, 1fr) 300px; }
+.proj-layout > *, .proj-hero > *, .card, .card-body { min-width: 0; }
+.readme, .markdown { min-width: 0; max-width: 100%; }
+.markdown { overflow-x: hidden; }
+.markdown img, .markdown video, .markdown svg, .markdown picture, .markdown iframe {
+  max-width: 100% !important; height: auto !important;
+}
+.markdown iframe { aspect-ratio: 16 / 9; width: 100%; }
+.markdown pre { max-width: 100%; }
+.markdown p img { vertical-align: middle; }
+
+/* таблицы: на всю ширину, ячейки делят место поровну */
+.markdown table { display: table; width: 100%; table-layout: fixed; overflow: visible; }
+.markdown td, .markdown th { overflow-wrap: anywhere; word-break: break-word; vertical-align: top; }
+.markdown td img, .markdown th img { width: 100%; }
+/* таблица с текстом без картинок — прокрутка внутри себя, если не влезает */
+.markdown table:not(:has(img)) { display: block; overflow-x: auto; table-layout: auto; }
+
+/* сетки/div-обёртки в README */
+.markdown div, .markdown p, .markdown details { max-width: 100%; }
+.markdown [align="center"] { text-align: center; }
+.markdown [align="center"] img { margin-left: auto; margin-right: auto; }
+
+@media (max-width: 1100px) {
+  .proj-layout { grid-template-columns: minmax(0, 1fr) 260px; gap: 28px; }
+}
+@media (max-width: 960px) {
+  .proj-layout { grid-template-columns: minmax(0, 1fr); }
+  .aside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aside > .btn { grid-column: span 2; }
+}
+@media (max-width: 760px) {
+  .aside { grid-template-columns: minmax(0, 1fr); }
+  .aside > .btn { grid-column: auto; }
+  .markdown { padding: 22px 16px 28px; font-size: 15px; }
+  .markdown h1 { font-size: 24px; }
+  .markdown h2 { font-size: 20px; }
+  /* на телефоне таблицы со скриншотами превращаются в одну колонку */
+  .markdown table:has(img), .markdown table:has(img) tbody,
+  .markdown table:has(img) thead, .markdown table:has(img) tr,
+  .markdown table:has(img) td, .markdown table:has(img) th { display: block; width: 100% !important; }
+  .markdown table:has(img) td, .markdown table:has(img) th { border: none; border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .markdown table:has(img) tr:last-child td:last-child { border-bottom: none; }
+  .proj-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proj-stat b { font-size: 21px; overflow-wrap: anywhere; }
+  .proj-hero .actions { width: 100%; }
+}
