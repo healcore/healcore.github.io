@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://healcore.github.io/sitemap.xml
